@@ -54,7 +54,7 @@ func (ossUtil) StsPutToken() H {
 
 	request := sts.AssumeRoleRequest{
 		DurationSeconds: new(int64(3600)),
-		RoleArn:         new("acs:ram::1562991307389090:role/ramoss"),
+		RoleArn:         new(""),
 		RoleSessionName: new("oss-moment-lingo"),
 		Policy:          new(policy),
 	}

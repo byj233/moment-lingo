@@ -95,7 +95,7 @@ func SendCaptchaEmail(to, code string) {
                     <p>请使用以下验证码完成账户验证：</p>
                     <div class="code-box">{{.code}}</div>
                     <p class="code-note">验证码有效期 5 分钟，过期请重新获取</p>
-                    <p>如有疑问，可联系客服：dydhd@vip.qq.com</p>
+                    <p>如有疑问，可联系客服：</p>
                 </div>
             </td>
         </tr>
