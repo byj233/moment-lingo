@@ -1,0 +1,48 @@
+server:
+  port: 1016
+
+database:
+  # MySQL 数据库地址（RDS 域名或 IP）
+  host: ""
+  port: 3306
+  # 数据库名
+  db: ""
+  # 数据库账号
+  username: ""
+  # 数据库密码
+  password: ""
+
+redis:
+  # Redis 地址
+  host: ""
+  port: 6379
+  db: 0
+  # Redis 账号（默认 default）
+  username: default
+  # Redis 密码
+  password: ""
+
+email:
+  # 发件邮箱账号
+  username: ""
+  # 邮箱 SMTP 授权码（不是邮箱登录密码）
+  password: ""
+  # SMTP 服务器地址（QQ 邮箱为 smtp.qq.com）
+  host: smtp.qq.com
+  port: 587
+
+meilisearch:
+  # Meilisearch 服务地址
+  url: ""
+  # Meilisearch API Key
+  api-key: ""
+
+python:
+  # Python 服务地址
+  url: http://localhost:8000
+
+aliyun:
+  # 阿里云 AccessKey ID（OSS、短信等服务使用）
+  access-key-id: ""
+  # 阿里云 AccessKey Secret
+  access-key-secret: ""

@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "moment-lingo-translator",
+  "version": "0.1.0",
+  "description": "支持划词翻译和全文翻译的智能翻译插件",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.momentlingo.cn/*"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "https://www.momentlingo.cn/auth/*"
+    ]
+  },
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_title": "翻译助手"
+  },
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "icons": {
+    "128": "public/logo.png",
+    "48": "public/logo.png",
+    "16": "public/logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/content/content.js"
+      ],
+      "css": [
+        "src/content/content.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/overlay/overlay.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

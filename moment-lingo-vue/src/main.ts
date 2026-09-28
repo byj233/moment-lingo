@@ -1,0 +1,15 @@
+import { createApp } from 'vue';
+import './style.css';
+import App from './App.vue';
+import ArcoVue from '@arco-design/web-vue';
+import '@arco-design/web-vue/dist/arco.css';
+import '@/api/index';
+import router from '@/router';
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import 'tdesign-mobile-vue/es/style/index.css';
+import TDesign from 'tdesign-mobile-vue';
+// new VConsole();
+const app = createApp(App);
+const pinia = createPinia().use(piniaPluginPersistedstate);
+app.use(TDesign).use(ArcoVue).use(router).use(pinia).mount('#app');

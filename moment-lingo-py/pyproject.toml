@@ -1,0 +1,32 @@
+[project]
+name = "moment-lingo-py"
+version = "0.1.0"
+requires-python = ">=3.13"
+
+
+dependencies = [
+    "aiomysql>=0.3.2",
+    "alibabacloud-credentials>=1.0.8",
+    "alibabacloud-dypnsapi20170525>=2.0.0",
+    "colorlog>=6.10.1",
+    "dashscope>=1.25.17",
+    "edge-tts>=7.2.8",
+    "fastapi>=0.135.3",
+    "json-repair>=0.59.0",
+    "langchain>=1.2.15",
+    "langchain-community>=0.4.1",
+    "langchain-deepseek>=1.0.1",
+    "langchain-openai>=1.1.12",
+    "langchain-redis>=0.2.5",
+    "meilisearch>=0.40.0",
+    "openai>=2.31.0",
+    "pymysql>=1.1.2",
+    "python-dotenv>=1.2.2",
+    "requests>=2.33.1",
+    "snowflake-id==1.0.2",
+    "sqlmodel>=0.0.38",
+    "sse-starlette>=3.3.4",
+    "ujson>=5.12.0",
+    "uvicorn>=0.44.0",
+    "websockets>=16.0",
+]

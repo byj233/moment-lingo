@@ -1,0 +1,350 @@
+
+::selection {
+    background: rgb(198, 210, 255, 0.9);
+}
+
+/* 选项弹窗样式 */
+.moment-lingo-options-popup {
+    position: absolute;
+    z-index: 10000;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    border: 1px solid #e1e4e8;
+    padding: 4px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    gap: 2px;
+}
+
+.moment-lingo-options-popup.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.option-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #24292e;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    min-width: 40px;
+    width: 40px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.option-btn:hover {
+    background-color: #f6f8fa;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.option-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    background-color: #eaecef;
+}
+
+.option-btn:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+.option-btn.copy-btn {
+    border-right: 1px solid #e1e4e8;
+}
+
+.option-btn.translate-btn {
+    color: #0969da;
+}
+
+.option-btn.translate-btn:hover {
+    background-color: #ddf4ff;
+    color: #0550ae;
+}
+
+/* SVG图标样式 */
+.option-btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.option-btn:hover svg {
+    transform: scale(1.1);
+}
+
+.option-btn:active svg {
+    transform: scale(0.95);
+}
+
+/* 翻译弹窗样式 */
+.moment-lingo-translation-popup {
+    position: absolute;
+    z-index: 10000;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-width: 340px;
+    max-width: 520px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.moment-lingo-translation-popup.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.moment-lingo-translation-popup .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background-color: #fafbfc;
+}
+
+.moment-lingo-translation-popup .popup-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #57606a;
+    letter-spacing: 0.5px;
+}
+
+.moment-lingo-translation-popup .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #8c959f;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.moment-lingo-translation-popup .close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #24292f;
+    transform: scale(1.05);
+}
+
+.moment-lingo-translation-popup .close-btn:active {
+    transform: scale(0.95);
+}
+
+.moment-lingo-translation-popup .popup-content {
+    padding: 20px;
+}
+
+.moment-lingo-translation-popup .original-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: #24292f;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.moment-lingo-translation-popup .translation-result {
+    font-size: 16px;
+    color: #24292e;
+    line-height: 1.6;
+    word-wrap: break-word;
+    font-weight: 400;
+}
+
+/* 结构化翻译结果展示样式 */
+.moment-lingo-translation-popup .dict-result {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.moment-lingo-translation-popup .dict-word {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4361ee;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.3px;
+}
+
+.moment-lingo-translation-popup .dict-translations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.moment-lingo-translation-popup .dict-trans-item {
+    background-color: rgba(67, 97, 238, 0.08);
+    border: 1px solid rgba(67, 97, 238, 0.15);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 13.5px;
+    color: #4361ee;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.moment-lingo-translation-popup .dict-trans-item:hover {
+    background-color: rgba(67, 97, 238, 0.15);
+}
+
+.moment-lingo-translation-popup .dict-link {
+    font-size: 13px;
+    color: #6e7781;
+    text-decoration: none;
+    align-self: flex-start;
+    margin-top: 8px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #f6f8fa;
+}
+
+.moment-lingo-translation-popup .dict-link:hover {
+    color: #4361ee;
+    background-color: #f0f3f6;
+}
+
+/* 加载动画 */
+.moment-lingo-translation-popup .translation-result.loading::after {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #8A2BE2;
+    border-radius: 50%;
+    margin-left: 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 通知样式 */
+.moment-lingo-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    background: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.moment-lingo-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.moment-lingo-notification.hide {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .moment-lingo-translation-popup {
+        min-width: 280px;
+        max-width: calc(100vw - 20px);
+        left: 10px !important;
+        right: 10px !important;
+        margin: 0 auto;
+    }
+
+    .moment-lingo-translation-popup .popup-content {
+        padding: 15px;
+    }
+
+    .moment-lingo-translation-popup .original-text {
+        font-size: 16px;
+    }
+
+    .moment-lingo-translation-popup .translation-result {
+        font-size: 14px;
+    }
+}
+
+.popup-header:hover {
+    cursor: move;
+}

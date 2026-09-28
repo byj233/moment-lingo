@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment Lingo 翻译助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="logo">
+            <img src="/public/logo.png" alt="Moment Lingo"/>
+        </div>
+        <h1 class="title">Moment Lingo 翻译助手</h1>
+    </header>
+
+    <main class="main">
+        <!-- 登录按钮 -->
+        <div class="login-section">
+            <button id="loginBtn" class="primary-btn login-btn">登录账号</button>
+            <!-- 用户信息 -->
+            <div id="userInfo" class="user-info" style="display: none;">
+                <div class="user-profile">
+                    <img id="userAvatar" class="user-avatar" src="" alt="用户头像" width="64" height="64"/>
+                    <span id="userNickname" class="user-nickname">用户</span>
+                </div>
+                <button id="logoutBtn" class="secondary-btn logout-btn">退出登录</button>
+            </div>
+        </div>
+
+        <!-- 功能开关 -->
+        <div id="settingsSection" class="settings-section" style="display: none;">
+            <div class="setting-item">
+                <label class="switch">
+                    <input type="checkbox" id="wordSelectionToggle" checked>
+                    <span class="slider"></span>
+                </label>
+                <span class="setting-label">启用划词翻译</span>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
