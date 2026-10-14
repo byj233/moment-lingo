@@ -16,7 +16,7 @@ interface RegisterReq {
   nickname: string;
   passcode: string;
   account: string;
-  code: string;
+  captcha: string;
 }
 
 async function sendCaptcha(data: CaptchaReq) {

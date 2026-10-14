@@ -94,7 +94,7 @@ async function onRegister() {
       nickname: registerForm.nickname.trim(),
       account: registerForm.account.trim(),
       passcode: registerForm.passcode.trim(),
-      code: registerForm.code.trim()
+      captcha: registerForm.code.trim()
     });
 
     userStore.save(resp.data);
