@@ -6,15 +6,17 @@
 
 **一个开源的、多端英语学习平台**
 
-Web · H5 · 浏览器插件 · App · 微信小程序
+Web · H5 · 浏览器插件
 
-[🌐 在线体验](https://www.momentlingo.cn) · [功能特性](#功能特性) · [快速开始](#快速开始) · [参与贡献](#参与贡献)
+[🌐 在线体验](https://www.momentlingo.cn) · [💻 GitHub](https://github.com/byj233/moment-lingo) · [📚 词库数据集](https://huggingface.co/datasets/byj233/moment-lingo-dict) · [功能特性](#功能特性) · [快速开始](#快速开始) · [参与贡献](#参与贡献)
 
 <img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg" />
 <img alt="Go" src="https://img.shields.io/badge/Go-1.26-00ADD8?logo=go&logoColor=white" />
 <img alt="Python" src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white" />
 <img alt="Vue" src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vuedotjs&logoColor=white" />
 <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
+<a href="https://github.com/byj233/moment-lingo"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/byj233/moment-lingo" /></a>
+<a href="https://huggingface.co/datasets/byj233/moment-lingo-dict"><img alt="Hugging Face Dataset" src="https://img.shields.io/badge/Dataset-Hugging%20Face-yellow?logo=huggingface&logoColor=white" /></a>
 
 </div>
 
@@ -28,7 +30,7 @@ moment-lingo 是一个面向英语学习者的多端平台，围绕 **「查词 
 
 ## 功能特性
 
-**📖 学习端（Web / H5 / App）**
+**📖 学习端（Web / H5）**
 
 - 词汇详情：音标、释义、例句、词形变化（原形 / 过去式 / 复数 / 比较级等）
 - 单词本与单词书，按书归类学习
@@ -80,8 +82,8 @@ moment-lingo 是一个面向英语学习者的多端平台，围绕 **「查词 
 
 ```
  浏览器插件 ─┐                        ┌─→ MySQL
- Web / H5  ─┼─→ 业务 API (Go · :8080)─┼─→ Redis
-   App     ─┘        │                └─→ Meilisearch
+ Web / H5  ─┴─→ 业务 API (Go · :8080)─┼─→ Redis
+                     │                └─→ Meilisearch
                      │  /ai /tts /essay /sms
                      ▼
              AI 服务 (Python · :8000) ──→ 大模型 / TTS / OSS
@@ -92,6 +94,13 @@ moment-lingo 是一个面向英语学习者的多端平台，围绕 **「查词 
 - 需要登录的接口通过 `Authorization: Bearer <token>` 校验，令牌由 Redis 维护。
 
 ## 快速开始
+
+克隆仓库：
+
+```bash
+git clone https://github.com/byj233/moment-lingo.git
+cd moment-lingo
+```
 
 ### 环境要求
 
@@ -172,7 +181,7 @@ moment-lingo/
 │   ├── src/sdk/              # 豆包 TTS WebSocket 协议实现
 │   ├── .env.example          # 环境变量模板
 │   └── main.py               # 本地启动入口
-├── moment-lingo-vue/         # Web / H5 / App 前端
+├── moment-lingo-vue/         # Web / H5 前端
 │   └── src/{views,api,store,components,config}/
 └── momentlingo-extension/    # 浏览器插件
     └── src/{background,content,popup}/
@@ -241,6 +250,16 @@ moment-lingo/
 
 </details>
 
+## 词库与数据集
+
+项目使用的英语词库（词条、音标、释义、例句、词形变化等）已单独开源在 Hugging Face：
+
+| 资源 | 地址 |
+| --- | --- |
+| 🤗 词库数据集 | [byj233/moment-lingo-dict](https://huggingface.co/datasets/byj233/moment-lingo-dict) |
+
+导入后可用于填充 `vocabulary`、`word`、`phrase` 等表；如果只想先跑通搜索，也可以直接用仓库里的 [`ms.py`](./moment-lingo-py/scripts/ms.py) 把词库灌进 Meilisearch 的 `vocabulary` 索引。
+
 ## 数据库
 
 建表语句见 [`moment-lingo-go/sql.txt`](./moment-lingo-go/sql.txt)，共 8 张表：
@@ -268,6 +287,7 @@ Go 负责常规业务接口与鉴权，性能好、部署简单；Python 生态�
 - [ ] 提供 Dockerfile 与 docker-compose，降低本地启动成本
 - [ ] 补充单元测试与 CI
 - [ ] 拆出更清晰的 API 文档（OpenAPI）
+- [ ] 接入 Tauri 工程，产出 App 端（目前仅预留了打包脚本）
 - [ ] 微信小程序端
 - [ ] 完善 README 截图与演示视频
 
@@ -277,7 +297,7 @@ Go 负责常规业务接口与鉴权，性能好、部署简单；Python 生态�
 
 欢迎任何形式的贡献：提交 Issue、修正文档、补充测试、提交 PR。
 
-1. Fork 本仓库，从 `master` 新建分支（建议 `feature/xxx` 或 `fix/xxx`）
+1. Fork 本仓库（[byj233/moment-lingo](https://github.com/byj233/moment-lingo)），从 `master` 新建分支（建议 `feature/xxx` 或 `fix/xxx`）
 2. 本地跑通后再提交，尽量保持一次 PR 只做一件事
 3. **提交前务必确认没有把密钥、令牌、账号或个人信息带进代码**（`.env` 已被忽略，配置文件请只填占位符）
 4. 发起 Pull Request，说明改动动机与验证方式
